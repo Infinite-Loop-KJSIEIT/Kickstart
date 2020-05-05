@@ -1,0 +1,36 @@
+We solve this in O(2^n)
+
+1. First we check all the possible ways in which B gets the more or equal happines than H
+---detail---
+lets assume all the shifts in binary, 
+where "1" means working on that particular shift
+and "0: not working on that shift
+
+so "0101"
+means working on 2nd and 4th shift
+
+Now we start check for all cases by using variable "mask" and checking if the any number in mask is "1" or not
+Eg: if mask=5 then mask=101 for 0th and 2nd digit are one
+"i" is digit position in mask( from left hand side)
+We use the formula mask&(1<<i) which gives a number greater than or equal to "1" for digit that is "1" in mask
+
+we use a way array to store if any way becomes available by marking it 1
+When checking for B we store the value in the negation of that value
+Eg: if for mark=5 we get a way where n is 8
+    then mark =0101, we store 1 in way for mark=1010
+                      ---this will be explained later----
+
+Now we have an array where all possible right combitions are marked(
+Now we try to check for any combination of A, how many combinations does B have
+which will satisfy( all shifts being covered and happiess mor than H)
+
+For mark="0011" the combinations which will satisfy are "1100","1101","1110","1111"
+What we do is, we take a 1 away from mark and add the number left to mark
+
+that is for mark="0011" we add "0010" and "0001"'s ways to "0011"
+as we had stored the original wasy in opposite manner,
+we actually add "1101" and "1110"'s ways to "0011"
+
+***Remeber to keep the out loop to i and inner to mark as foing the opposite causes repetetions
+
+Now we just check for possible ways of A and add possible ways of B for that particular combination 
