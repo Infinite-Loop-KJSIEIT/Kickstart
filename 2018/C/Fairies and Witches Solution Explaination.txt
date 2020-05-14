@@ -1,0 +1,13 @@
+A Polygon is Possible if 
+Sum of all sides> 2*Maxium side
+
+and Polygon should have more than 2 sides
+
+We use simple DFS where we chose a vertice, mark it,
+then chose a next vertice, which lies ahead of the first one, and is connected to first, then mark that vertice too, and chose the edge between them
+
+Every time we goo deeper into recursion to find the next vertice, we start with the one next vertice of the first one and not transverse or chose the marked vertices.
+
+We unmark them accordingly every time
+
+Refer the code for better understating
